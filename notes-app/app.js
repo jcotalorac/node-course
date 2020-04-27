@@ -1,3 +1,4 @@
-const sum = require('./utils');
+const fs = require('fs');
+const msg = require('./utils');
 
-console.log(sum(4, -2));
+fs.writeFileSync('notes.js', msg());

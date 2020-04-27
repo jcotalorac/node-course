@@ -1,9 +1,7 @@
 console.log('utils.js');
 
-const name = 'Mike';
-
-const add = function(a, b) {
-    return a + b;
+const getNotes = function() {
+    return 'Your notes...';
 }
 
-module.exports = add;
+module.exports = getNotes;
