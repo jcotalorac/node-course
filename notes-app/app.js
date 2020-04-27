@@ -2,7 +2,8 @@ const validator = require('validator');
 const yargs = require('yargs');
 const chalk = require('chalk');
 
-console.log(process.argv);
+yargs.version('1.1.0');
+
 console.log(yargs.argv);
 
 /*if(command === 'add'){
