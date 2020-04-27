@@ -5,7 +5,7 @@ const getNotes = function() {
 }
 
 const addNote = function(title, body) {
-    
+    const notes = loadNotes();
 }
 
 const loadNotes = function() {
