@@ -4,10 +4,12 @@ const chalk = require('chalk');
 
 yargs.version('1.1.0');
 
-console.log(yargs.argv);
+yargs.command({
+    command: 'add',
+    describe: 'Add a new note',
+    handler: function() {
+        console.log('Adding a new note!');
+    }
+});
 
-/*if(command === 'add'){
-    console.log('Adding note!');
-} else if(command === 'remove') {
-    console.log('Removing note!');
-}*/
+console.log(yargs.argv);
