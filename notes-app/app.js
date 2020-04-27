@@ -5,3 +5,5 @@ const msg = getNotes();
 console.log(msg);
 
 console.log(validator.isEmail('andrew@example.com'));
+
+console.log(validator.isURL('http://mead.io'));
