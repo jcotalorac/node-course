@@ -1,3 +1,3 @@
-const fs = require('fs');
+const name = 'Andrew';
 
-fs.appendFileSync('notes.txt', 'Message appended');
+console.log(name);
