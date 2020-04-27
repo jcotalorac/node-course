@@ -20,4 +20,20 @@ yargs.command({
     }
 });
 
+yargs.command({
+    command: 'list',
+    describe: 'List a note',
+    handler: function(){
+        console.log('Listing the note');
+    }
+});
+
+yargs.command({
+    command: 'read',
+    describe: 'Read a note',
+    handler: function(){
+        console.log('Reading the note');
+    }
+});
+
 console.log(yargs.argv);
