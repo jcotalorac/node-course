@@ -6,12 +6,17 @@ const getNotes = function() {
 
 const addNote = function(title, body) {
     const notes = loadNotes();
+    console.log(notes);
 }
 
 const loadNotes = function() {
-    const dataBuffer = fs.readFileSync('notes.json');
-    const data = JSON.parse(dataBuffer.toString);
-    return data;
+    try {
+        const dataBuffer = fs.readFileSync('notes.json');
+        const data = JSON.parse(dataBuffer.toString);
+        return data;        
+    } catch (error) {
+        return [];
+    }
 }
 
 module.exports = {
