@@ -5,6 +5,10 @@ const getNotes = () => {
     console.log(loadNotes());
 }
 
+const listNotes = () => {
+    console.log(loadNotes());
+}
+
 const addNote = (title, body) => {
     const notes = loadNotes();
     const duplicateNote = notes.find((note) => note.title === title);
@@ -54,5 +58,6 @@ const removeNote = (title) => {
 module.exports = {
     getNotes: getNotes,
     addNote: addNote,
-    removeNote: removeNote
+    removeNote: removeNote,
+    listNotes: listNotes
 }
