@@ -49,5 +49,6 @@ const removeNote = function(title) {
 
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
