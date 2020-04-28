@@ -11,7 +11,7 @@
 
 const event = {
     name: 'Birthday Party',
-    printGuestList: function () {
+    printGuestList: () => {
         console.log('Guest list for ' + this.name);
     }
 };
