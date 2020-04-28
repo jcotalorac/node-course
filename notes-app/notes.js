@@ -2,7 +2,7 @@ const fs = require('fs');
 const chalk = require('chalk');
 
 const getNotes = () => {
-    return 'Your notes...';
+    console.log(loadNotes());
 }
 
 const addNote = (title, body) => {
