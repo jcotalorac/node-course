@@ -1,4 +1,5 @@
 const fs = require('fs');
+const chalk = require('chalk');
 
 const getNotes = function() {
     return 'Your notes...';
@@ -39,12 +40,17 @@ const loadNotes = function() {
 }
 
 const removeNote = function(title) {
-    const notes = loadNotes();
+    const notes = loadNotes();   
     const index = notes.findIndex(function(note) {
-        note.title === title;
+        return note.title === title;
     });
-    notes.splice(index, 1);
-    saveNotes(notes);
+    if(index > -1) {
+        notes.splice(index, 1);
+        saveNotes(notes);
+        console.log(chalk.green.inverse('Note removed!'));
+    } else {
+        console.log(chalk.red.inverse('No note found!'));
+    }
 }
 
 module.exports = {
