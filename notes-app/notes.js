@@ -1,8 +1,15 @@
 const fs = require('fs');
 const chalk = require('chalk');
 
-const getNotes = () => {
-    console.log(loadNotes());
+const getNotes = (title) => {
+    const notes = loadNotes();
+    const note = notes.find(note => note.title === title);
+
+    if(note) {
+        console.log(chalk.green.inverse('Note found'));
+    } else {
+        console.log(chalk.red.inverse('Note not foound'));
+    }
 }
 
 const listNotes = () => {
