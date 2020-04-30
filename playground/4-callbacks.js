@@ -15,3 +15,9 @@ const geocode = (address, callback) => {
 geocode('Philadelphia', (data) => {
     console.log(data);
 });
+
+
+
+add(1,4, (sum) => {
+    console.log(sum);
+});
