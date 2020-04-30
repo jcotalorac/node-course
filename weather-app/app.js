@@ -9,6 +9,7 @@ geocode('Madelena', (error, data) => {
         if(error) {
             return console.log(error);
         }
+        console.log(data.location);
         console.log('Data', forecastData);
     });
 });
