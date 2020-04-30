@@ -3,11 +3,13 @@ setTimeout(() => {
 }, 2000);
 
 const geocode = (address, callback) => {
-    const data = {
-        latitude: 0,
-        longitude: 0
-    };
-    return data;
+    setTimeout(() => {
+        const data = {
+            latitude: 0,
+            longitude: 0
+        };
+        return data;
+    }, 2000);
 }
 
 const data = geocode('Philadelphia');
