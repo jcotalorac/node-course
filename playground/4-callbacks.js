@@ -8,9 +8,10 @@ const geocode = (address, callback) => {
             latitude: 0,
             longitude: 0
         };
-        return data;
+        callback(data);
     }, 2000);
 }
 
-const data = geocode('Philadelphia');
-console.log(data);
+geocode('Philadelphia', (data) => {
+    console.log(data);
+});
