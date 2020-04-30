@@ -29,3 +29,11 @@ request({ url: geoCodeUrl, json: true}, (error, response) => {
         console.log(`Lat: ${latitude}, Long: ${longitude}`);
     }
 });
+
+const geocode = (address, callback) => {
+    //
+};
+
+geocode('Philadelphia', () => {
+    
+});
