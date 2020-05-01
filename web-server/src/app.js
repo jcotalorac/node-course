@@ -7,7 +7,10 @@ app.get('/', (request, response) => {
 });
 
 app.get('/help', (request, response) => {
-    response.send('Help page');
+    response.send({
+        name: 'Andrew',
+        age: 27
+    });
 });
 
 app.get('/about', (request, response) => {
