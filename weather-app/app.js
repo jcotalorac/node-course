@@ -3,7 +3,9 @@ const geocode = require('./utils/geocode');
 
 const place = process.argv[2];
 
-if(place) {
+if(!place) {
+    console.log('Please provide an address');
+} else {
     geocode(process.argv[2], (error, data) => {
         if(error) {
             return console.log(error);
