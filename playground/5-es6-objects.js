@@ -16,7 +16,8 @@ const product = {
     salePrice: undefined
 };
 
-const { label, stock } = product;
+const { label, stock, rating } = product;
 
 console.log(label);
 console.log(stock);
+console.log(rating);
