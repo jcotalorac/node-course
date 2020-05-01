@@ -7,10 +7,12 @@ const request = http.request(url, (response) => {
     let data = '';
 
     response.on('data', (chunk) => {
-        console.log(chunk);
+        data += chunk.toString();        
     });
 
-    response.on('end', () => {});
+    response.on('end', () => {
+        console.log(data);
+    });
 });
 
 request.end();
