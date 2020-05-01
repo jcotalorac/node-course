@@ -8,3 +8,15 @@ const user = {
 };
 
 console.log(user);
+
+const product = {
+    label: 'Red notebook',
+    price: 3,
+    stock: 201,
+    salePrice: undefined
+};
+
+const { label, stock } = product;
+
+console.log(label);
+console.log(stock);
