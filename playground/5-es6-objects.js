@@ -18,6 +18,6 @@ const product = {
 
 const { label:productLabel, stock, rating } = product;
 
-console.log(label);
+console.log(productLabel);
 console.log(stock);
 console.log(rating);
