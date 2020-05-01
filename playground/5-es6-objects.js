@@ -13,7 +13,8 @@ const product = {
     label: 'Red notebook',
     price: 3,
     stock: 201,
-    salePrice: undefined
+    salePrice: undefined,
+    rating: 6
 };
 
 const { label:productLabel, stock, rating = 5 } = product;
