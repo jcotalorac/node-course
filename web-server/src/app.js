@@ -15,9 +15,8 @@ app.get('', (request, response) => {
 });
 
 app.get('/help', (request, response) => {
-    response.send({
-        name: 'Andrew',
-        age: 27
+    response.render('help', {
+        message: 'Help message'
     });
 });
 
