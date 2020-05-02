@@ -24,7 +24,8 @@ app.get('', (request, response) => {
 app.get('/help', (request, response) => {
     response.render('help', {
         message: 'Help message',
-        title: 'Help'
+        title: 'Help',
+        name: 'Another name'
     });
 });
 
