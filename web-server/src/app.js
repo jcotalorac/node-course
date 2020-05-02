@@ -22,7 +22,10 @@ app.get('/help', (request, response) => {
 });
 
 app.get('/about', (request, response) => {
-    response.render('about');
+    response.render('about', {
+        title: 'About me',
+        name: 'Andrew Mead'
+    });
 });
 
 app.get('/weather', (request, response) => {
