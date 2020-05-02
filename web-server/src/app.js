@@ -41,11 +41,18 @@ app.get('/weather', (request, response) => {
 });
 
 app.get('/help/*', (request, response) => {
-    response.send('Help article not found');
+    response.render('404', {
+        title: '404',
+        message: 'Page not found',
+        name: 'JC'
+    });
 });
 
 app.get('*', (request, response) => {
-    response.send('My 404 page');
+    response.render('404', {
+        title: 'Error',
+        name: 'JC'
+    });
 });
 
 app.listen(3000, () => {
