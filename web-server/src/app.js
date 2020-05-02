@@ -8,7 +8,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.set('view engine', 'hbs');
 
 app.get('', (request, response) => {
-    response.render('index');
+    response.render('index', {
+        title: 'Weather app',
+        name: 'Andrew Mead'
+    });
 });
 
 app.get('/help', (request, response) => {
