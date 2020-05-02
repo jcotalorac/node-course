@@ -40,6 +40,8 @@ app.get('/weather', (request, response) => {
     response.send('<head><title>Weather</title></head>');
 });
 
+app.get('*', (request, response) => {});
+
 app.listen(3000, () => {
     console.log('Server is up on port 3000');
 });
