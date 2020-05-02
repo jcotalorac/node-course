@@ -23,7 +23,8 @@ app.get('', (request, response) => {
 
 app.get('/help', (request, response) => {
     response.render('help', {
-        message: 'Help message'
+        message: 'Help message',
+        title: 'Help'
     });
 });
 
