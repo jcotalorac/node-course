@@ -22,7 +22,7 @@ app.get('/help', (request, response) => {
 });
 
 app.get('/about', (request, response) => {
-    response.send('<head><title>About</title></head>');
+    response.render('about');
 });
 
 app.get('/weather', (request, response) => {
