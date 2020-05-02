@@ -7,6 +7,10 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.set('view engine', 'hbs');
 
+app.get('', (request, response) => {
+    response.render('index');
+});
+
 app.get('/help', (request, response) => {
     response.send({
         name: 'Andrew',
