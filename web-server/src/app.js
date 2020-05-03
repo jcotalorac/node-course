@@ -40,6 +40,13 @@ app.get('/weather', (request, response) => {
     response.send('<head><title>Weather</title></head>');
 });
 
+app.get('/products', (request, response) => {
+    console.log(request.query);
+    response.send({
+        products: []
+    });
+});
+
 app.get('/help/*', (request, response) => {
     response.render('404', {
         title: '404',
