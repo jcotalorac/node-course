@@ -1,12 +1,5 @@
 console.log('Client site javascript file is loaded!');
 
-fetch('http://puzzle.mead.io/puzzle').then(response => {
-    response.json().then(data => {
-        console.log(data);
-        
-    });
-});
-
 fetch('http://localhost:3000/weather?address=Madelena').then(response => {
     response.json().then(data => {
         if(data.error) {
@@ -15,4 +8,10 @@ fetch('http://localhost:3000/weather?address=Madelena').then(response => {
             console.log(data);
         }
     });
+});
+
+const weatherForm = document.querySelector('form');
+weatherForm.addEventListener('submit', (event) => {
+    console.log('abc');
+    
 });
