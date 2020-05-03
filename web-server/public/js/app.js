@@ -12,6 +12,6 @@ fetch('http://localhost:3000/weather?address=Madelena').then(response => {
 
 const weatherForm = document.querySelector('form');
 weatherForm.addEventListener('submit', (event) => {
-    console.log('abc');
-    
+    event.preventDefault();
+    console.log('Form submit');
 });
