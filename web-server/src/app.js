@@ -37,11 +37,23 @@ app.get('/about', (request, response) => {
 });
 
 app.get('/weather', (request, response) => {
-    response.send('<head><title>Weather</title></head>');
+    if(!request.query.address) {
+        response.send({
+            message: 'You must provide an address'
+        });
+        return;
+    }
+
+    response.send({
+        message: `Provided address: ${request.query.address}`
+    });
 });
 
 app.get('/products', (request, response) => {
     console.log(request.query);
+    response.send({
+        products: []
+    });
     response.send({
         products: []
     });
