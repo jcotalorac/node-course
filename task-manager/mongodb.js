@@ -86,7 +86,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         console.log(error);
     }); */
 
-    db.collection('tasks').updateMany(
+    /* db.collection('tasks').updateMany(
         {
             completed: false
         },
@@ -101,5 +101,16 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     })
     .catch((error) => {
         console.log('There was an error');
+    }); */
+
+    db.collection('users').deleteMany({
+        age: 27
+    })
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.log(error);
+        
     });
 });
