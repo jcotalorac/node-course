@@ -20,7 +20,7 @@ hbs.registerPartials(partialsPath);
 app.get('', (request, response) => {
     response.render('index', {
         title: 'Weather app',
-        name: 'Andrew Mead'
+        name: 'JC'
     });
 });
 
@@ -28,14 +28,14 @@ app.get('/help', (request, response) => {
     response.render('help', {
         message: 'Help message',
         title: 'Help',
-        name: 'Another name'
+        name: 'JC'
     });
 });
 
 app.get('/about', (request, response) => {
     response.render('about', {
         title: 'About me',
-        name: 'Andrew Mead'
+        name: 'JC'
     });
 });
 
