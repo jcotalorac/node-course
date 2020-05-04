@@ -4,8 +4,8 @@ const geocodePromise = new Promise((resolve, reject) => {
             latitude: 0,
             longitude: 0
         };
-        resolve(data);
-        //reject('Bad message');
+        //resolve(data);
+        reject('Bad message');
     }, 2000);
 });
 
