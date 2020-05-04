@@ -76,8 +76,8 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         _id: new ObjectID("5eb046bed0322a47d48ea30a")
     },
     {
-        $set: {
-            name: 'Changed JC'
+        $inc : {
+            age: 1
         }
     }).then((result) => {
         console.log(result);
