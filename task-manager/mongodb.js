@@ -72,16 +72,14 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         console.log(count);
     });*/
 
-    const updatePromise = db.collection('users').updateOne({
+    db.collection('users').updateOne({
         _id: new ObjectID("5eb046bed0322a47d48ea30a")
     },
     {
         $set: {
             name: 'Changed JC'
         }
-    });
-
-    updatePromise.then((result) => {
+    }).then((result) => {
         console.log(result);
     })
     .catch((error) => {
