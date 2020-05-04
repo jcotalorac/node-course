@@ -6,6 +6,7 @@ const connectionURL = 'mongodb://localhost:27017';
 const databaseName = 'task-manager';
 const id = new ObjectID();
 console.log(id);
+console.log(id.id);
 console.log(id.getTimestamp());
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
@@ -14,7 +15,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     }
 
     const db = client.db(databaseName);
-    db.collection('users').insertOne({
+    /*db.collection('users').insertOne({
         _id: id,
         name: 'Vikram',
         age: 26
@@ -23,7 +24,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
             return console.log('Unable to insert user');
         }
         console.log(result.ops);
-    });
+    });*/
     /*db.collection('users').insertMany([
         {
             name: 'Jen',
