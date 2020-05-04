@@ -63,4 +63,8 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         }
         console.log(user);
     });
+
+    db.collection('users').find({ age: 27 }).toArray((error, users) => {
+        console.log(users);
+    });
 });
