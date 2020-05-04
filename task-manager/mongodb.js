@@ -6,6 +6,7 @@ const connectionURL = 'mongodb://localhost:27017';
 const databaseName = 'task-manager';
 const id = new ObjectID();
 console.log(id);
+console.log(id.getTimestamp());
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
     if(error) {
