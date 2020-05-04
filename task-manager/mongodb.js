@@ -57,7 +57,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         
     });*/
 
-    db.collection('users').findOne({ _id: new ObjectID("5eb077105aaa5a5c58072375") }, (error, user) => {
+    /*db.collection('users').findOne({ _id: new ObjectID("5eb077105aaa5a5c58072375") }, (error, user) => {
         if(error) {
             return console.log('Unable to fetch');
         }
@@ -70,5 +70,15 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
 
     db.collection('users').find({ age: 27 }).count((error, count) => {
         console.log(count);
+    });*/
+
+    const updatePromise = db.collection('users').updateOne({
+        _id: new ObjectID("5eb046bed0322a47d48ea30a")
+    },
+    {
+        $set: {
+            name: 'Changed JC'
+        }
     });
+
 });
