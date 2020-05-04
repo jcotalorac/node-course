@@ -54,7 +54,7 @@ app.get('/weather', (request, response) => {
                 message: error
             });
         }
-        forecast(latitude, longitude, (error, {temperature, feelslike, weatherDescription }) => {
+        forecast(latitude, longitude, (error, {temperature, feelslike, weatherDescription, humidity }) => {
             if(error) {
                 return response.send({
                     message: error
@@ -65,10 +65,10 @@ app.get('/weather', (request, response) => {
                 weatherDescription,
                 temperature,
                 feelslike,
-                address
+                address,
+                humidity,
+                result: `${weatherDescription}. Temperature is ${temperature} and it feels like ${feelslike} with and humidity of ${humidity}`
             });
-            console.log(location);
-            console.log(`${weatherDescription}. Temperature is ${temperature} and it feels like ${feelslike}`);
         });
     });
 });
