@@ -57,7 +57,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         
     });*/
 
-    db.collection('users').findOne({ name: 'Jen' }, (error, user) => {
+    db.collection('users').findOne({ name: 'Jen', age: 1 }, (error, user) => {
         if(error) {
             return console.log('Unable to fetch');
         }
