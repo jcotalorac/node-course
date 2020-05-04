@@ -1,8 +1,11 @@
 const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
+const ObjectID = mongodb.ObjectID;
 
 const connectionURL = 'mongodb://localhost:27017';
 const databaseName = 'task-manager';
+const id = new ObjectID();
+console.log(id);
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
     if(error) {
@@ -34,7 +37,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         }
         console.log(result.ops);
     });*/
-    db.collection('tasks').insertMany([
+    /*db.collection('tasks').insertMany([
         {
             description: 'Task1',
             completed: true
@@ -53,5 +56,5 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         }
         console.log(result.ops);
         
-    });
+    });*/
 });
