@@ -72,7 +72,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         console.log(count);
     });*/
 
-    db.collection('users').updateOne({
+    /* db.collection('users').updateOne({
         _id: new ObjectID("5eb046bed0322a47d48ea30a")
     },
     {
@@ -84,6 +84,22 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
     })
     .catch((error) => {
         console.log(error);
-    });
+    }); */
 
+    db.collection('tasks').updateMany(
+        {
+            completed: false
+        },
+        {
+            $set: {
+                completed: true
+            }
+        }
+    )
+    .then((result) => {
+        console.log('All tasks completed!');
+    })
+    .catch((error) => {
+        console.log('There was an error');
+    });
 });
