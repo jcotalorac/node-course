@@ -103,14 +103,25 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         console.log('There was an error');
     }); */
 
-    db.collection('users').deleteMany({
+    /* db.collection('users').deleteMany({
         age: 27
     })
     .then((result) => {
         console.log(result);
     })
     .catch((error) => {
+        console.log(error);        
+    }); */
+
+    db.collection('tasks').deleteOne(
+        {
+            description: 'Task2'
+        }
+    )
+    .then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
         console.log(error);
-        
     });
 });
