@@ -4,11 +4,6 @@ const ObjectID = mongodb.ObjectID;
 
 const connectionURL = 'mongodb://localhost:27017';
 const databaseName = 'task-manager';
-const id = new ObjectID();
-console.log(id);
-console.log(id.id);
-console.log(id.id.length);
-console.log(id.getTimestamp());
 
 MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) => {
     if(error) {
@@ -61,4 +56,11 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         console.log(result.ops);
         
     });*/
+
+    db.collection('users').findOne({ name: 'Jen' }, (error, user) => {
+        if(error) {
+            return console.log('Unable to fetch');
+        }
+        console.log(user);
+    });
 });
