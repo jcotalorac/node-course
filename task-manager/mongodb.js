@@ -81,4 +81,11 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         }
     });
 
+    updatePromise.then((result) => {
+        console.log(result);
+    })
+    .catch((error) => {
+        console.log(error);
+    });
+
 });
