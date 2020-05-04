@@ -19,7 +19,7 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
         }
         console.log(result.ops);
     });*/
-    db.collection('users').insertMany([
+    /*db.collection('users').insertMany([
         {
             name: 'Jen',
             age: 28
@@ -33,5 +33,25 @@ MongoClient.connect(connectionURL, { useNewUrlParser: true }, (error, client) =>
             return console.log('Unable to insert documents!');
         }
         console.log(result.ops);
+    });*/
+    db.collection('tasks').insertMany([
+        {
+            description: 'Task1',
+            completed: true
+        },
+        {
+            description: 'Task2',
+            completed: false
+        },
+        {
+            description: 'Taks3',
+            completed: true
+        }
+    ], (error, result) => {
+        if(error) {
+            return console.log('Unable to insert tasks');
+        }
+        console.log(result.ops);
+        
     });
 });
