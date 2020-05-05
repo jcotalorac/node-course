@@ -71,6 +71,7 @@ const Task = mongoose.model('Task', {
 });
 
 const task1 = new Task({
+    description: "Task1"
 });
 
 task1.save()
