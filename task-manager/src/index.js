@@ -6,6 +6,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 app.post('/users', (request, response) => {
+    console.log(request.body);
     response.send('testing!');
 });
 
