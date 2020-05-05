@@ -14,8 +14,8 @@ app.post('/users', (request, response) => {
     .then(() => {
         response.send(user);
     })
-    .catch(() => {
-        response.send(500);
+    .catch((error) => {
+        response.status(400).send(error);
     });
     console.log(request.body);
 });
