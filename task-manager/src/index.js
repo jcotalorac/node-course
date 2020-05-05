@@ -26,7 +26,7 @@ app.get('/users', (request, response) => {
         response.send(users);
     })
     .catch((error) => {
-        response.status(400).send(error);
+        response.status(500).send(error);
     });
 });
 
@@ -48,7 +48,7 @@ app.get('/tasks', (request, response) => {
         response.send(tasks);
     })
     .catch((error) => {
-        response.status(400).send(error);
+        response.status(500).send(error);
     });
 });
 
