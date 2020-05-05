@@ -38,7 +38,9 @@ const User = mongoose.model('User', {
         trim: true,
         minlength: 6,
         validate(value){
-            return !validator.contains(value, "password");
+            if(validator.contains(value, "password")) {
+                throw new Error('Password invalid by password containing');
+            }
         }
     }
 });
