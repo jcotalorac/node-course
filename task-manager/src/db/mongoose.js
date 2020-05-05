@@ -13,3 +13,8 @@ const User = mongoose.model('User', {
         type: Number
     }
 });
+
+const me = new User({
+    name: "JC",
+    age: 37
+});
