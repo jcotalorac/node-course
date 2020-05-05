@@ -21,9 +21,19 @@ app.post('/users', (request, response) => {
 });
 
 app.get('/users', (request, response) => {
-    User.find()
+    User.findB()
     .then((users) => {
         response.send(users);
+    })
+    .catch((error) => {
+        response.status(500).send(error);
+    });
+});
+
+app.get('/users/:id', (request, response) => {
+    User.findById(request.params.id)
+    .then((user) => {
+        response.send(user);
     })
     .catch((error) => {
         response.status(500).send(error);
