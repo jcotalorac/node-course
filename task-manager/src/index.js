@@ -33,6 +33,9 @@ app.get('/users', (request, response) => {
 app.get('/users/:id', (request, response) => {
     User.findById(request.params.id)
     .then((user) => {
+        if(!user) {
+            return response.status(404).send();
+        }
         response.send(user);
     })
     .catch((error) => {
