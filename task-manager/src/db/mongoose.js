@@ -16,7 +16,7 @@ const User = mongoose.model('User', {
 
 const me = new User({
     name: "JC",
-    age: 37
+    age: 'age'
 });
 
 me.save()
