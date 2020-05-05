@@ -20,12 +20,32 @@ app.post('/users', (request, response) => {
     });
 });
 
+app.get('/users', (request, response) => {
+    User.find()
+    .then((users) => {
+        response.send(users);
+    })
+    .catch((error) => {
+        response.status(400).send(error);
+    });
+});
+
 app.post('/tasks', (request, response) => {
     const task = new Task(request.body);
 
     task.save()
     .then(() => {
         response.status(201).send(task);
+    })
+    .catch((error) => {
+        response.status(400).send(error);
+    });
+});
+
+app.get('/tasks', (request, response) => {
+    Task.find()
+    .then((tasks) => {
+        response.send(tasks);
     })
     .catch((error) => {
         response.status(400).send(error);
