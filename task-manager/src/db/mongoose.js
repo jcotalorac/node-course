@@ -16,15 +16,3 @@ const Task = mongoose.model('Task', {
         default: false
     }
 });
-
-const task1 = new Task({
-    description: "Task1"
-});
-
-task1.save()
-.then(() => {
-    console.log(task1);
-})
-.catch((error) => {
-    console.log('Error!', error);
-});
