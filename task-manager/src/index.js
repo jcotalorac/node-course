@@ -65,6 +65,19 @@ app.get('/tasks', (request, response) => {
     });
 });
 
+app.get('/tasks/:id', (request, response) => {
+    Task.findById(request.params.id)
+    .then((task) => {
+        if(!task){
+            return response.status(404).send();
+        }
+        response.send(task);
+    })
+    .catch((error) => {
+        response.status(500).send(error);
+    });
+});
+
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 });
