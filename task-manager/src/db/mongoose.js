@@ -31,6 +31,15 @@ const User = mongoose.model('User', {
             }
         },
         default: 0
+    },
+    password: {
+        type: String,
+        required: true,
+        trim: true,
+        minlength: 6,
+        validate(value){
+            return !validator.contains(value, "password");
+        }
     }
 });
 
