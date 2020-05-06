@@ -42,16 +42,15 @@ app.get('/users/:id', async (request, response) => {
     }
 });
 
-app.post('/tasks', (request, response) => {
+app.post('/tasks', async (request, response) => {
     const task = new Task(request.body);
 
-    task.save()
-    .then(() => {
+    try {
+        task.save();
         response.status(201).send(task);
-    })
-    .catch((error) => {
+    } catch (error) {
         response.status(400).send(error);
-    });
+    }
 });
 
 app.get('/tasks', (request, response) => {
