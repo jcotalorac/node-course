@@ -56,9 +56,15 @@ app.post('/tasks', (request, response) => {
 });
 
 app.get('/tasks', (request, response) => {
+    let allTasks;
     Task.find()
     .then((tasks) => {
-        response.send(tasks);
+        allTasks = tasks;
+        return Task.countDocuments({});
+    })
+    .then((count) => {
+        allTasks.push(count);
+        response.send(allTasks);
     })
     .catch((error) => {
         response.status(500).send(error);
