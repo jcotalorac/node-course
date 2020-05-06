@@ -25,7 +25,7 @@ const add = (a, b) => {
     });
 };
 
-add(1, 2)
+/* add(1, 2)
 .then((sum) => {
     console.log(sum);
     add(sum, 5)
@@ -35,6 +35,18 @@ add(1, 2)
     .catch((error) => {
         console.log(error);
     });
+})
+.catch((error) => {
+    console.log(error);
+}); */
+
+add(1, 2)
+.then((sum) => {
+    console.log(sum);
+    return add(sum, 5);
+})
+.then((sum2) => {
+    console.log(sum2);
 })
 .catch((error) => {
     console.log(error);
