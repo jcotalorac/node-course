@@ -9,7 +9,8 @@ const add = (a, b) => {
 const doWork = async () => {
     const sum = await add(1, 2);
     console.log(sum);
-    
+    const sum2 = await add(sum, 5);
+    console.log(sum2);
     //throw new Error('Something went wrong');
     //return 'JC'
 };
