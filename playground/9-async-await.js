@@ -1,5 +1,5 @@
-const doWork = () => {
-    
+const doWork = async () => {
+
 };
 
 console.log(doWork());
