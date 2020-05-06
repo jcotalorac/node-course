@@ -42,6 +42,17 @@ app.get('/users/:id', async (request, response) => {
     }
 });
 
+app.patch('/users/:id', async (request, response) => {
+    try {
+        const user = await User.findByIdAndUpdate(request.params.id, {
+            age: request.body.age
+        });
+        response.send(user);
+    } catch (error) {
+        response.status(400).send();
+    }
+});
+
 app.post('/tasks', async (request, response) => {
     const task = new Task(request.body);
 
