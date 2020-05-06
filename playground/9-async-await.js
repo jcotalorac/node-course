@@ -1,5 +1,6 @@
 const doWork = async () => {
-    return 'JC'
+    throw new Error('Something went wrong');
+    //return 'JC'
 };
 
 doWork()
