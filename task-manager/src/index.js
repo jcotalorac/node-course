@@ -21,9 +21,15 @@ app.post('/users', (request, response) => {
 });
 
 app.get('/users', (request, response) => {
-    User.findB()
+    let allUsers;
+    User.find()
     .then((users) => {
-        response.send(users);
+        allUsers = users;
+        return User.countDocuments();
+    })
+    .then((count) => {
+        allUsers.push(count);
+        response.send(allUsers);
     })
     .catch((error) => {
         response.status(500).send(error);
