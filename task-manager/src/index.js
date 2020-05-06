@@ -48,6 +48,9 @@ app.patch('/users/:id', async (request, response) => {
             new: true,
             runValidators: true
         });
+        if(!user) {
+            return response.status(404).send();
+        }
         response.send(user);
     } catch (error) {
         response.status(400).send();
