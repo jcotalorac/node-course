@@ -21,15 +21,16 @@ app.post('/users', (request, response) => {
 });
 
 app.get('/users', (request, response) => {
-    let allUsers;
-    User.find()
-    .then((users) => {
-        allUsers = users;
-        return User.countDocuments();
-    })
-    .then((count) => {
+    const allUsers = async () => {
+        let allUsers = await User.find();
+        const count = await User.countDocuments();
         allUsers.push(count);
-        response.send(allUsers);
+        return allUsers;
+    };
+
+    allUsers()
+    .then((result) => {
+        response.send(result);
     })
     .catch((error) => {
         response.status(500).send(error);
