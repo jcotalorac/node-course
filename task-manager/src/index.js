@@ -63,15 +63,16 @@ app.post('/tasks', (request, response) => {
 });
 
 app.get('/tasks', (request, response) => {
-    let allTasks;
-    Task.find()
-    .then((tasks) => {
-        allTasks = tasks;
-        return Task.countDocuments({});
-    })
-    .then((count) => {
+    const allTasks = async() => {
+        let allTasks = await Task.find();
+        const count = await Task.countDocuments();
         allTasks.push(count);
-        response.send(allTasks);
+        return allTasks;
+    };
+
+    allTasks()
+    .then((result) => {
+        response.send(result);
     })
     .catch((error) => {
         response.status(500).send(error);
