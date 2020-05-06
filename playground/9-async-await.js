@@ -2,4 +2,10 @@ const doWork = async () => {
     return 'JC'
 };
 
-console.log(doWork());
+doWork()
+.then((result) => {
+    console.log('Result', result);
+})
+.catch((error) => {
+    console.log('Error', error);
+});
