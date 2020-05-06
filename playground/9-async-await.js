@@ -7,14 +7,17 @@ const add = (a, b) => {
 };
 
 const doWork = async () => {
+    const sum = await add(1, 2);
+    console.log(sum);
+    
     //throw new Error('Something went wrong');
     //return 'JC'
 };
 
-doWork()
-.then((result) => {
+doWork();
+/* .then((result) => {
     console.log('Result', result);
 })
 .catch((error) => {
     console.log('Error', error);
-});
+}); */
