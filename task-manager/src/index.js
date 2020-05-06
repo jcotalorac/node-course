@@ -30,17 +30,16 @@ app.get('/users', async (request, response) => {
     }
 });
 
-app.get('/users/:id', (request, response) => {
-    User.findById(request.params.id)
-    .then((user) => {
+app.get('/users/:id', async (request, response) => {
+    try {
+        const user = await User.findById(request.params.id);
         if(!user) {
             return response.status(404).send();
         }
         response.send(user);
-    })
-    .catch((error) => {
+    } catch (error) {
         response.status(500).send(error);
-    });
+    }
 });
 
 app.post('/tasks', (request, response) => {
