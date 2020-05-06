@@ -64,17 +64,16 @@ app.get('/tasks', async (request, response) => {
     }
 });
 
-app.get('/tasks/:id', (request, response) => {
-    Task.findById(request.params.id)
-    .then((task) => {
+app.get('/tasks/:id', async (request, response) => {
+    try {
+        const task = await Task.findById(request.params.id);
         if(!task){
             return response.status(404).send();
         }
         response.send(task);
-    })
-    .catch((error) => {
+    } catch (error) {
         response.status(500).send(error);
-    });
+    }
 });
 
 app.listen(port, () => {
