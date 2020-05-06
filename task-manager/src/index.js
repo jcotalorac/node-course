@@ -8,16 +8,15 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.post('/users', (request, response) => {
+app.post('/users', async (request, response) => {
     const user = new User(request.body);
 
-    user.save()
-    .then(() => {
+    try {
+        await user.save();
         response.status(201).send(user);
-    })
-    .catch((error) => {
+    } catch (error) {
         response.status(400).send(error);
-    });
+    }
 });
 
 app.get('/users', (request, response) => {
