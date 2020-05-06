@@ -11,14 +11,15 @@ const doWork = async () => {
     console.log(sum);
     const sum2 = await add(sum, 5);
     console.log(sum2);
+    return sum2;
     //throw new Error('Something went wrong');
     //return 'JC'
 };
 
-doWork();
-/* .then((result) => {
+doWork()
+.then((result) => {
     console.log('Result', result);
 })
 .catch((error) => {
     console.log('Error', error);
-}); */
+});
