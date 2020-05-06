@@ -53,21 +53,15 @@ app.post('/tasks', async (request, response) => {
     }
 });
 
-app.get('/tasks', (request, response) => {
-    const allTasks = async() => {
+app.get('/tasks', async (request, response) => {
+    try {
         let allTasks = await Task.find();
         const count = await Task.countDocuments();
         allTasks.push(count);
-        return allTasks;
-    };
-
-    allTasks()
-    .then((result) => {
-        response.send(result);
-    })
-    .catch((error) => {
+        response.send(allTasks);
+    } catch (error) {
         response.status(500).send(error);
-    });
+    }
 });
 
 app.get('/tasks/:id', (request, response) => {
