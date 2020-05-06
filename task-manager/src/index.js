@@ -44,6 +44,7 @@ app.get('/users/:id', async (request, response) => {
 
 app.patch('/users/:id', async (request, response) => {
     const updates = Object.keys(request.body);
+    const allowedUpdates = ['name', 'email', 'password', 'age'];
     try {
         const user = await User.findByIdAndUpdate(request.params.id, request.body, {
             new: true,
