@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
+const bcryptjs = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -42,7 +43,11 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', async function(next) {
     const user = this;
-    console.log('Just before saving');
+    
+    if(user.isModified('password')) {
+        user.password = await bcryptjs.hash(user.password, 8);
+    }
+
     next();
 });
 
