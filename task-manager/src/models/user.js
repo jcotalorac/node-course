@@ -40,7 +40,13 @@ const userSchema = new mongoose.Schema({
                 throw new Error('Password invalid by password containing');
             }
         }
-    }
+    },
+    tokens: [
+        {
+            type: String,
+            required: true
+        }
+    ]
 });
 
 userSchema.pre('save', async function(next) {
