@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
-const userSchema = {
+const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -38,7 +38,9 @@ const userSchema = {
             }
         }
     }
-};
+});
+
+userSchema.pre();
 
 const User = mongoose.model('User', userSchema);
 
