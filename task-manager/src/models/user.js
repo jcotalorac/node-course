@@ -52,6 +52,8 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
+userSchema.methods.generateAuthToken = () => {};
+
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await User.findOne({ email });
     if(!user) {
