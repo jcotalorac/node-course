@@ -51,6 +51,13 @@ userSchema.pre('save', async function(next) {
     next();
 });
 
+userSchema.statics.findByCredentials = async (email, password) => {
+    const user = await User.findOne({ email });
+    if(!user) {
+        throw new Error('Unable to login');
+    }
+};
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
