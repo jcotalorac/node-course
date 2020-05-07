@@ -40,7 +40,9 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-userSchema.pre();
+userSchema.pre('save', function() {
+    
+});
 
 const User = mongoose.model('User', userSchema);
 
