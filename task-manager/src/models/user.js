@@ -56,6 +56,13 @@ userSchema.statics.findByCredentials = async (email, password) => {
     if(!user) {
         throw new Error('Unable to login');
     }
+    const isPasswordMatch = await bcryptjs.compare(password, user.password);
+
+    if(!isPasswordMatch) {
+        throw new Error('Unable to login');
+    }
+
+    return user;
 };
 
 const User = mongoose.model('User', userSchema);
