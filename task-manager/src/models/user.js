@@ -43,8 +43,10 @@ const userSchema = new mongoose.Schema({
     },
     tokens: [
         {
-            type: String,
-            required: true
+            token: {
+                type: String,
+                required: true
+            }
         }
     ]
 });
@@ -62,6 +64,8 @@ userSchema.pre('save', async function(next) {
 userSchema.methods.generateAuthToken = async function() {
     const user = this;
     const token = jsonwebtoken.sign({ _id: user._id.toString() }, 'thisismynewcourse');
+    user.tokens.push({ token });
+    await user.save();
     return token;
 };
 
