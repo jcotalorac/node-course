@@ -13,6 +13,7 @@ const auth = async (request, response, next) => {
         if(!user) {
             throw new Error();
         }
+        request.token = token;
         request.user = user;
         next();
     } catch (error) {
