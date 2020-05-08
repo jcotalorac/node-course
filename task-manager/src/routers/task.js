@@ -31,9 +31,8 @@ router.post('/tasks', auth, async (request, response) => {
 
 router.get('/tasks', auth, async (request, response) => {
     try {
-        let allTasks = await Task.find({
-            owner: request.user._id
-        });
+        await request.user.populate('tasks').execPopulate();
+        const allTasks = request.user.tasks;
         //const count = await Task.countDocuments();
         //allTasks.push(count);
         response.send(allTasks);
