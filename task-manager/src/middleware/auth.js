@@ -5,7 +5,11 @@ const auth = async (request, response, next) => {
     try {
         const token = request.header('Authorization').replace('Bearer ', '');
         const decoded = jsonwebtoken.verify(token, 'thisismynewcourse');
-        console.log(decoded);
+        const user = await User.findOne({
+            _id: decoded._id,
+            'tokens.token' : token
+        });
+        console.log(user);
     } catch (error) {
         response.status(401).send({ error: 'Please authenticate.' });
     }
