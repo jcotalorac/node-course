@@ -107,7 +107,7 @@ router.delete('/users/:id', async (request, response) => {
         }
         response.send(user);
     } catch (error) {
-        response.send(500).send(error);
+        response.status(500).send(error);
     }
 });
 
