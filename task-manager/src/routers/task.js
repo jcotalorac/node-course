@@ -5,10 +5,12 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 router.post('/tasks', auth, async (request, response) => {
-    const task = new Task(request.body);
+    const task = new Task({
+        ...request.body,
+        owner: request.user._id
+    });
 
     try {
-        task.owner = request.user._id;
         task.save();
         response.status(201).send(task);
     } catch (error) {
