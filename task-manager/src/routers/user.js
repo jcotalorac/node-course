@@ -28,10 +28,10 @@ router.post('/users/login', async (request, response) => {
 
 router.post('/users/logout', auth, async (request, response) => {
     try {
-        request.user.tokens.filter((token) => {
+        request.user.tokens = request.user.tokens.filter((token) => {
             return token.token !== request.token;
         });
-        await user.save();
+        await request.user.save();
 
         response.send();
     } catch (error) {
