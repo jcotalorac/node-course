@@ -14,14 +14,3 @@ app.use(taskRouter);
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 });
-
-const pet = {
-    name: 'Hal'
-};
-
-pet.toJSON = function() {
-    delete this.name;
-    return this;
-};
-
-console.log(pet, JSON.stringify(pet));
