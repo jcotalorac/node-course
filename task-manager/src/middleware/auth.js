@@ -1,5 +1,13 @@
+const jsonwebtoken = require('jsonwebtoken');
+const User = require('../models/user');
+
 const auth = async (request, response, next) => {
-    console.log('auth middleware');
+    try {
+        const token = request.header('Authorization');
+        console.log(token);
+    } catch (error) {
+        response.status(401).send({ error: 'Please authenticate.' });
+    }
     next();
 };
 
