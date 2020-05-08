@@ -9,11 +9,14 @@ const auth = async (request, response, next) => {
             _id: decoded._id,
             'tokens.token' : token
         });
-        console.log(user);
+        
+        if(!user) {
+            throw new Error();
+        }
+        next();
     } catch (error) {
         response.status(401).send({ error: 'Please authenticate.' });
     }
-    next();
 };
 
 module.exports = auth;
