@@ -26,7 +26,7 @@ router.post('/users/login', async (request, response) => {
     }
 });
 
-router.get('/users', auth, async (request, response) => {
+router.get('/users', async (request, response) => {
     try {
         let allUsers = await User.find();
         const count = await User.countDocuments();
@@ -35,6 +35,10 @@ router.get('/users', auth, async (request, response) => {
     } catch (error) {
         response.status(500).send(error);
     }
+});
+
+router.get('/users/me', auth, async (request, response) => {
+    response.send(request.user);
 });
 
 router.get('/users/:id', async (request, response) => {
