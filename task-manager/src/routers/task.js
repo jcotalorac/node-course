@@ -18,20 +18,48 @@ router.post('/tasks', auth, async (request, response) => {
     }
 });
 
-router.get('/tasks', async (request, response) => {
+// router.get('/tasks', async (request, response) => {
+//     try {
+//         let allTasks = await Task.find();
+//         const count = await Task.countDocuments();
+//         allTasks.push(count);
+//         response.send(allTasks);
+//     } catch (error) {
+//         response.status(500).send(error);
+//     }
+// });
+
+router.get('/tasks', auth, async (request, response) => {
     try {
-        let allTasks = await Task.find();
-        const count = await Task.countDocuments();
-        allTasks.push(count);
+        let allTasks = await Task.find({
+            owner: request.user._id
+        });
+        //const count = await Task.countDocuments();
+        //allTasks.push(count);
         response.send(allTasks);
     } catch (error) {
         response.status(500).send(error);
     }
 });
 
-router.get('/tasks/:id', async (request, response) => {
+// router.get('/tasks/:id', async (request, response) => {
+//     try {
+//         const task = await Task.findById(request.params.id);
+//         if(!task){
+//             return response.status(404).send();
+//         }
+//         response.send(task);
+//     } catch (error) {
+//         response.status(500).send(error);
+//     }
+// });
+
+router.get('/tasks/:id', auth, async (request, response) => {
     try {
-        const task = await Task.findById(request.params.id);
+        const task = await Task.findOne({
+            _id: request.params.id,
+            owner: request.user._id
+        });
         if(!task){
             return response.status(404).send();
         }
