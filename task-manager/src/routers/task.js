@@ -119,9 +119,25 @@ router.patch('/tasks/:id', auth, async (request, response) => {
     }
 });
 
-router.delete('/tasks/:id', async (request, response) => {
+// router.delete('/tasks/:id', async (request, response) => {
+//     try {
+//         const task = await Task.findByIdAndDelete(request.params.id);
+
+//         if(!task) {
+//             return response.status(404).send();
+//         }
+//         response.send(task);
+//     } catch (error) {
+//         response.status(500).send(error);
+//     }
+// });
+
+router.delete('/tasks/:id', auth, async (request, response) => {
     try {
-        const task = await Task.findByIdAndDelete(request.params.id);
+        const task = await Task.findOneAndDelete({
+            _id: request.params.id,
+            owner: request.user._id
+        });
 
         if(!task) {
             return response.status(404).send();
