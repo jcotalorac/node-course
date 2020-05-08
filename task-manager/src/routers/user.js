@@ -26,6 +26,12 @@ router.post('/users/login', async (request, response) => {
     }
 });
 
+router.post('/users/logout', auth, (request, response) => {});
+
+router.get('/users/me', auth, async (request, response) => {
+    response.send(request.user);
+});
+
 router.get('/users', async (request, response) => {
     try {
         let allUsers = await User.find();
@@ -37,9 +43,6 @@ router.get('/users', async (request, response) => {
     }
 });
 
-router.get('/users/me', auth, async (request, response) => {
-    response.send(request.user);
-});
 
 router.get('/users/:id', async (request, response) => {
     try {
