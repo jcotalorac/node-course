@@ -24,6 +24,7 @@ const main = async () => {
     // console.log(task.owner);
 
     const user = await User.findById('5eb5c78187d63462d0163359');
+    await user.populate('tasks').execPopulate();
 
     console.log(user.tasks);
 };
