@@ -4,8 +4,6 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-router.use(auth);
-
 router.post('/users', async (request, response) => {
     const user = new User(request.body);
 
@@ -28,7 +26,7 @@ router.post('/users/login', async (request, response) => {
     }
 });
 
-router.get('/users', async (request, response) => {
+router.get('/users', auth, async (request, response) => {
     try {
         let allUsers = await User.find();
         const count = await User.countDocuments();
