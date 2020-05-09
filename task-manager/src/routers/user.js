@@ -158,6 +158,8 @@ router.delete('/users/me', auth, async (request, response) => {
 
 router.post('/users/me/avatar', upload.single('avatar'), (request, response) => {
     response.send();
+}, (error, request, response, next) => {
+    response.status(400).send(error.message);
 });
 
 module.exports = router;
