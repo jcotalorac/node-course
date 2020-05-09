@@ -155,8 +155,9 @@ router.delete('/users/me', auth, async (request, response) => {
     }
 });
 
-router.post('/users/me/avatar', auth, upload.single('avatar'), (request, response) => {
+router.post('/users/me/avatar', auth, upload.single('avatar'), async (request, response) => {
     request.user.avatar = request.file.buffer;
+    await request.user.save();
     response.send();
 }, (error, request, response, next) => {
     response.status(400).send(error.message);
