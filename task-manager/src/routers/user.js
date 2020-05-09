@@ -169,4 +169,19 @@ router.delete('/users/me/avatar', auth, async (request, response) => {
     response.send();
 });
 
+router.get('/users/:id/avatar', async (request, response) => {
+    try {
+        const user = await User.findById(request.params.id);
+
+        if(!user) {
+            throw new Error('Not found');
+        }
+
+        response.set('Content-Type', 'image/jpg');
+        response.send(user.avatar);
+    } catch (error) {
+        response.status(404).send();
+    }
+});
+
 module.exports = router;
