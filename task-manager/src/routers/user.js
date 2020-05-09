@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/user');
 const auth = require('../middleware/auth');
 const multer = require('multer');
+const sharp = require('sharp');
 
 const router = express.Router();
 const upload = multer({
@@ -156,7 +157,8 @@ router.delete('/users/me', auth, async (request, response) => {
 });
 
 router.post('/users/me/avatar', auth, upload.single('avatar'), async (request, response) => {
-    request.user.avatar = request.file.buffer;
+    const buffer = await sharp(request.file.buffer).png().resize({ width: 250, height: 250 }).toBuffer();
+    request.user.avatar = buffer;
     await request.user.save();
     response.send();
 }, (error, request, response, next) => {
@@ -177,7 +179,7 @@ router.get('/users/:id/avatar', async (request, response) => {
             throw new Error('Not found');
         }
 
-        response.set('Content-Type', 'image/jpg');
+        response.set('Content-Type', 'image/png');
         response.send(user.avatar);
     } catch (error) {
         response.status(404).send();
