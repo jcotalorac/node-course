@@ -31,7 +31,12 @@ router.post('/tasks', auth, async (request, response) => {
 
 router.get('/tasks', auth, async (request, response) => {
     try {
-        await request.user.populate('tasks').execPopulate();
+        await request.user.populate({
+            path: 'tasks',
+            match: {
+                completed: request.query.completed
+            }
+        }).execPopulate();
         const allTasks = request.user.tasks;
         //const count = await Task.countDocuments();
         //allTasks.push(count);
