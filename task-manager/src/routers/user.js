@@ -5,7 +5,6 @@ const multer = require('multer');
 
 const router = express.Router();
 const upload = multer({
-    dest: 'avatars',
     limits: {
         fileSize: 1000000
     },
