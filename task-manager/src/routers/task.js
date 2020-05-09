@@ -38,7 +38,11 @@ router.get('/tasks', auth, async (request, response) => {
         }
         await request.user.populate({
             path: 'tasks',
-            match
+            match,
+            options : {
+                limit: parseInt(request.query.limit),
+                skip: parseInt(request.query.skip)
+            }
         }).execPopulate();
         const allTasks = request.user.tasks;
         //const count = await Task.countDocuments();
