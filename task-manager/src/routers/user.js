@@ -156,6 +156,7 @@ router.delete('/users/me', auth, async (request, response) => {
 });
 
 router.post('/users/me/avatar', auth, upload.single('avatar'), (request, response) => {
+    request.user.avatar = request.file.buffer;
     response.send();
 }, (error, request, response, next) => {
     response.status(400).send(error.message);
