@@ -163,4 +163,10 @@ router.post('/users/me/avatar', auth, upload.single('avatar'), async (request, r
     response.status(400).send(error.message);
 });
 
+router.delete('/users/me/avatar', auth, async (request, response) => {
+    request.user.avatar = undefined;
+    await request.user.save();
+    response.send();
+});
+
 module.exports = router;
