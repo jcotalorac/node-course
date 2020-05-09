@@ -14,12 +14,3 @@ app.use(taskRouter);
 app.listen(port, () => {
     console.log('Server is up on port ' + port);
 });
-
-const multer = require('multer');
-const upload = multer({
-    dest: 'images'
-});
-
-app.post('/upload', upload.single('upload'), (request, response) => {
-    response.send();
-});
