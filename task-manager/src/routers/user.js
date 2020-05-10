@@ -3,6 +3,7 @@ const User = require('../models/user');
 const auth = require('../middleware/auth');
 const multer = require('multer');
 const sharp = require('sharp');
+const { sendWelcomeEmail } = require('../emails/account');
 
 const router = express.Router();
 const upload = multer({
@@ -23,6 +24,7 @@ router.post('/users', async (request, response) => {
 
     try {
         await user.save();
+        sendWelcomeEmail(user.email, user.name);
         const token = await user.generateAuthToken();
         response.status(201).send({ user, token });
     } catch (error) {
