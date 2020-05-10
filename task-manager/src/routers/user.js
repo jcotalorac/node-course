@@ -3,7 +3,7 @@ const User = require('../models/user');
 const auth = require('../middleware/auth');
 const multer = require('multer');
 const sharp = require('sharp');
-const { sendWelcomeEmail } = require('../emails/account');
+const { sendWelcomeEmail, sendCancelationEmail } = require('../emails/account');
 
 const router = express.Router();
 const upload = multer({
@@ -152,6 +152,7 @@ router.delete('/users/me', auth, async (request, response) => {
             return response.status(404).send();
         }*/
         request.user.remove();
+        sendCancelationEmail(request.user.email, request.user.name);
         response.send(request.user);
     } catch (error) {
         response.status(500).send(error);
