@@ -151,7 +151,7 @@ router.delete('/users/me', auth, async (request, response) => {
         /*if(!user) {
             return response.status(404).send();
         }*/
-        request.user.remove();
+        await request.user.remove();
         sendCancelationEmail(request.user.email, request.user.name);
         response.send(request.user);
     } catch (error) {
