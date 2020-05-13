@@ -72,3 +72,7 @@ test('Should delete account for user', async() => {
 test('Should not delete account for unauthenticated user', async() => {
     await request(app).delete('/users/me').send().expect(401);
 });
+
+test('Should upload avatar', async () => {
+    await request(app).post('/users/me/avatar').set('Authorization', 'Bearer ' + userOne.tokens[0].token).attach('avatar', 'tests/fixtures/Ruana.jpg').expect(200);
+});
