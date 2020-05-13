@@ -21,7 +21,7 @@ beforeEach(async () => {
 });
 
 test('Should signup a new user', async () => {
-    await request(app).post('/users').send({
+    const request = await request(app).post('/users').send({
         name: "A name",
         email: "jcotalorac@gmail.com",
         password: "pwd12345"
