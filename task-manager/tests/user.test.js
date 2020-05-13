@@ -21,11 +21,15 @@ beforeEach(async () => {
 });
 
 test('Should signup a new user', async () => {
-    const request = await request(app).post('/users').send({
+    const response = await request(app).post('/users').send({
         name: "A name",
         email: "jcotalorac@gmail.com",
         password: "pwd12345"
     }).expect(201);
+
+    const user = await User.findById(response.body.user._id);
+    expect(user).not.toBeNull();
+    expect(user.name).toBe("A name");
 });
 
 test('Should login existent user', async() => {
