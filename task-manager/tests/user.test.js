@@ -24,3 +24,10 @@ test('Should signup a new user', async () => {
 test('Should login existent user', async() => {
     await request(app).post('/users/login').send(userOne).expect(200);
 });
+
+test('Should login not existent user', async() => {
+    await request(app).post('/users/login').send({
+        email: "mail@mail.com",
+        password: "pwdnotexistent"
+    }).expect(400);
+});
