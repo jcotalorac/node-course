@@ -41,7 +41,10 @@ test('Should signup a new user', async () => {
 });
 
 test('Should login existent user', async() => {
-    await request(app).post('/users/login').send(userOne).expect(200);
+    const response = await request(app).post('/users/login').send(userOne).expect(200);
+
+    const user = await User.findById(userOne._id);
+    expect(response.body.token).toBe(user.tokens[1].token);
 });
 
 test('Should login not existent user', async() => {
