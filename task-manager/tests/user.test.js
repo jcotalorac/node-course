@@ -75,4 +75,6 @@ test('Should not delete account for unauthenticated user', async() => {
 
 test('Should upload avatar', async () => {
     await request(app).post('/users/me/avatar').set('Authorization', 'Bearer ' + userOne.tokens[0].token).attach('avatar', 'tests/fixtures/Ruana.jpg').expect(200);
+
+    const user = await User.findById(userOneId);
 });
