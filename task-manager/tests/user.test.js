@@ -38,3 +38,7 @@ test('Should login not existent user', async() => {
         password: "pwdnotexistent"
     }).expect(400);
 });
+
+test('Should get profile user', async() => {
+    await request(app).get('/users/me').send().expect(200);
+});
