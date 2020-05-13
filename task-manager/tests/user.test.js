@@ -29,7 +29,14 @@ test('Should signup a new user', async () => {
 
     const user = await User.findById(response.body.user._id);
     expect(user).not.toBeNull();
-    expect(user.name).toBe("A name");
+    
+    expect(response.body).toMatchObject({
+        user: {
+            name: "A name",
+            email: "jcotalorac@gmail.com"
+        },
+        token: user.tokens[0].token
+    });
 });
 
 test('Should login existent user', async() => {
