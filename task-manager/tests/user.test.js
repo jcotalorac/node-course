@@ -37,6 +37,7 @@ test('Should signup a new user', async () => {
         },
         token: user.tokens[0].token
     });
+    expect(user.password).not.toBe("pwd12345");
 });
 
 test('Should login existent user', async() => {
