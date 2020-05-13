@@ -1,12 +1,9 @@
 const request = require('supertest');
 const app = require('../src/app');
+const User = require('../src/models/user');
 
-beforeEach(() => {
-    console.log('beforeEach');
-});
-
-afterEach(() => {
-    console.log('afterEach');
+beforeEach(async () => {
+    await User.deleteMany();
 });
 
 test('Should signup a new user', async () => {
