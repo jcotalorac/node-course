@@ -42,3 +42,7 @@ test('Should login not existent user', async() => {
 test('Should get profile user', async() => {
     await request(app).get('/users/me').set('Authorization', 'Bearer ' + userOne.tokens[0].token).send().expect(200);
 });
+
+test('Should not get profile for unauthenticades user', async() => {
+    await request(app).get('/users/me').send().expect(401);
+});
