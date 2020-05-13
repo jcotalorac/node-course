@@ -4,7 +4,7 @@ const User = require('../src/models/user');
 
 const userOne = {
     name: "User one",
-    email: "jcotalorac@gmail.com",
+    email: "juancagado@hotmail.com",
     password: "otherpwd"
 };
 
@@ -19,4 +19,8 @@ test('Should signup a new user', async () => {
         email: "jcotalorac@gmail.com",
         password: "pwd12345"
     }).expect(201);
+});
+
+test('Should login existent user', async() => {
+    await request(app).post('/users/login').send(userOne).expect(200);
 });
