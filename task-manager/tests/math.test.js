@@ -18,8 +18,9 @@ test('Should convert 0 C to 32 F', () => {
     expect(celsiusToFahrenheit(0)).toBe(32);
 });
 
-test('Async test demo', () => {
+test('Async test demo', (done) => {
     setTimeout(() => {
         expect(1).toBe(2);
+        done();
     }, 2000);
 });
