@@ -10,7 +10,6 @@ const socket = io();
 // });
 
 const chatForm = document.querySelector('#message-form');
-const input = document.querySelector('input');
 
 
 socket.on('message', (message) => {
@@ -19,5 +18,5 @@ socket.on('message', (message) => {
 
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    socket.emit('sendMessage', input.value);
+    socket.emit('sendMessage', event.target.elements.message.value);
 });
