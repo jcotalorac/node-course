@@ -35,6 +35,10 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', (message) => {
         io.emit('message', message);
     });
+
+    socket.on('disconnect', () => {
+        io.emit('message', 'A user has left');
+    });
 });
 
 
