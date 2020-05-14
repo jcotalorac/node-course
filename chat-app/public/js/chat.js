@@ -8,3 +8,7 @@ const socket = io();
 //     console.log('Clicked');
 //     socket.emit('increment');
 // });
+
+socket.on('message', (message) => {
+    console.log(message);
+});

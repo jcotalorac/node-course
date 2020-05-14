@@ -26,6 +26,12 @@ app.use(express.static(publicDirectoryPath));
 //     });
 // });
 
+io.on('connection', (socket) => {
+    console.log('New socket connection');
+
+    socket.emit('message', 'Welcome!');
+});
+
 
 server.listen(port, () => {
     console.log('Running on port ' + port);
