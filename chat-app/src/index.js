@@ -14,7 +14,7 @@ app.use(express.static(publicDirectoryPath));
 
 let count = 0;
 
-io.on('connection', () => {
+io.on('connection', (socket) => {
     console.log('New WebSocket connection');
 });
 
