@@ -30,6 +30,10 @@ io.on('connection', (socket) => {
     console.log('New socket connection');
 
     socket.emit('message', 'Welcome!');
+
+    socket.on('sendMessage', (message) => {
+        io.emit('message', message);
+    });
 });
 
 

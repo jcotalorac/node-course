@@ -9,6 +9,15 @@ const socket = io();
 //     socket.emit('increment');
 // });
 
+const chatForm = document.querySelector('#message-form');
+const input = document.querySelector('input');
+
+
 socket.on('message', (message) => {
     console.log(message);
+});
+
+chatForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    socket.emit('sendMessage', input.value);
 });
