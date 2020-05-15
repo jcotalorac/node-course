@@ -21,14 +21,15 @@ socket.on('message', (message) => {
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
     chatButton.setAttribute('disabled', 'disabled');
-    chatInput.value = '';
-    chatInput.focus();
+    
     socket.emit('sendMessage', event.target.elements.message.value, (error) => {
+        chatButton.removeAttribute('disabled');
+        chatInput.value = '';
+        chatInput.focus();
         if(error) {
             return console.log(error);
         }
 
-        chatButton.removeAttribute('disabled');
         console.log('Message delivered');
     });
 });
