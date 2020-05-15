@@ -15,6 +15,7 @@ const chatButton = chatForm.querySelector('button');
 const locationButton = document.querySelector('#send-location');
 const messages = document.querySelector('#messages');
 const messageTemplate = document.querySelector('#message-template').innerHTML;
+const locationTemplate = document.querySelector('#location-message-template').innerHTML;
 
 socket.on('message', (message) => {
     console.log(message);
@@ -26,6 +27,10 @@ socket.on('message', (message) => {
 
 socket.on('locationMessage', (url) => {
     console.log(url);
+    const html = Mustache.render(locationTemplate, {
+        url
+    });
+    messages.insertAdjacentHTML('beforeend', html);
 });
 
 chatForm.addEventListener('submit', (event) => {
