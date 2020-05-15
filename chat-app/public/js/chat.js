@@ -10,6 +10,8 @@ const socket = io();
 // });
 
 const chatForm = document.querySelector('#message-form');
+const chatInput = chatForm.querySelector('input');
+const chatButton = chatForm.querySelector('button');
 const locationButton = document.querySelector('#send-location');
 
 socket.on('message', (message) => {
