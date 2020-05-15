@@ -18,8 +18,12 @@ socket.on('message', (message) => {
 
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    socket.emit('sendMessage', event.target.elements.message.value, (message) => {
-        console.log('The message was delivered', message);
+    socket.emit('sendMessage', event.target.elements.message.value, (error) => {
+        if(error) {
+            return console.log(error);
+        }
+
+        console.log('Message delivered');
     });
 });
 
