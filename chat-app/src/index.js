@@ -34,7 +34,7 @@ io.on('connection', (socket) => {
 
     socket.on('sendMessage', (message, ackcallback) => {
         io.emit('message', message);
-        ackcallback();
+        ackcallback('Delivered!');
     });
 
     socket.on('disconnect', () => {
