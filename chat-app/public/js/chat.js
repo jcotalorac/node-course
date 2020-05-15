@@ -26,6 +26,7 @@ chatForm.addEventListener('submit', (event) => {
             return console.log(error);
         }
 
+        chatButton.removeAttribute('disabled');
         console.log('Message delivered');
     });
 });
