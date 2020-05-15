@@ -39,11 +39,14 @@ locationButton.addEventListener('click', () => {
         return alert('Geolocation is not supported by your browser.');
     }
 
+    locationButton.setAttribute('disabled', 'disabled');
+
     navigator.geolocation.getCurrentPosition((position) => {
         socket.emit('sendLocation', {
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
         }, () => {
+            locationButton.removeAttribute('disabled');
             console.log('Location shared!');
         });
     });
