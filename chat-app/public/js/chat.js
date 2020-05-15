@@ -20,6 +20,7 @@ socket.on('message', (message) => {
 
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
+    chatButton.setAttribute('disabled', 'disabled');
     socket.emit('sendMessage', event.target.elements.message.value, (error) => {
         if(error) {
             return console.log(error);
