@@ -24,6 +24,10 @@ socket.on('message', (message) => {
     messages.insertAdjacentHTML('beforeend', html);
 });
 
+socket.on('locationMessage', (url) => {
+    console.log(url);
+});
+
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
     chatButton.setAttribute('disabled', 'disabled');
