@@ -18,7 +18,9 @@ socket.on('message', (message) => {
 
 chatForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    socket.emit('sendMessage', event.target.elements.message.value);
+    socket.emit('sendMessage', event.target.elements.message.value, () => {
+        console.log('The message was delivered');
+    });
 });
 
 locationButton.addEventListener('click', () => {
