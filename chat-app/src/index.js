@@ -50,13 +50,15 @@ io.on('connection', (socket) => {
     });
 
     socket.on('sendMessage', (message, ackcallback) => {
+        const user = getUser(socket.id);
+
         const filter = new Filter();
 
         if(filter.isProfane(message)){
             return ackcallback('Profanity is not allowed!');
         }
 
-        io.emit('message', generateMessage(message));
+        io.to(user.room).emit('message', generateMessage(message));
         ackcallback();
     });
 
@@ -69,7 +71,9 @@ io.on('connection', (socket) => {
     });
 
     socket.on('sendLocation', (location, ackcallback) => {
-        io.emit('locationMessage', generateLocationMessage(`https://google.com/maps?q=${location.latitude},${location.longitude}`));
+        const user = getUser(socket.id);
+
+        io.to(user.room).emit('locationMessage', generateLocationMessage(`https://google.com/maps?q=${location.latitude},${location.longitude}`));
         ackcallback();
     });
 });
